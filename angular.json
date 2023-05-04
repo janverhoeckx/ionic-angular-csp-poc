@@ -17,6 +17,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "optimization": {
+              "scripts": true,
+              "fonts": {
+                "inline": true
+              },
+              "styles": {
+                "minify": true,
+                "inlineCritical": false
+              }
+            },
             "outputPath": "dist/csp-poc",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,60 +37,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              {
-                "input": "node_modules/@ionic/angular/css/core.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/normalize.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/structure.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/typography.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/display.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/padding.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/float-elements.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/text-alignment.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/text-transformation.css"
-              },
-              {
-                "input": "node_modules/@ionic/angular/css/flex-utils.css"
-              },
-              {
-                "input": "src/theme/variables.css"
-              }
+              "src/styles.scss"
             ],
-            "scripts": [],
-            "optimization": {
-              "scripts": true,
-              "fonts": {
-                "inline": true
-              },
-              "styles": {
-                "minify": true,
-                "inlineCritical": false
-              }
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -138,41 +100,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "ionic-cordova-serve": {
-          "builder": "@ionic/angular-toolkit:cordova-serve",
-          "options": {
-            "cordovaBuildTarget": "csp-poc:ionic-cordova-build",
-            "devServerTarget": "csp-poc:serve"
-          },
-          "configurations": {
-            "production": {
-              "cordovaBuildTarget": "csp-poc:ionic-cordova-build:production",
-              "devServerTarget": "csp-poc:serve:production"
-            }
-          }
-        },
-        "ionic-cordova-build": {
-          "builder": "@ionic/angular-toolkit:cordova-build",
-          "options": {
-            "browserTarget": "csp-poc:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "csp-poc:build:production"
-            }
           }
         }
       }
